@@ -1,28 +1,26 @@
 package com.matheus.cursomc.resources;
 
 import com.matheus.cursomc.domain.Categoria;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.matheus.cursomc.services.CategoriaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value="/categorias")
 public class CategoriaResource {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Categoria> listar() {
 
-        Categoria cat1 = new Categoria(1, "Informática");
-        Categoria cat2 = new Categoria(2, "Escritório");
+    @Autowired
+    private CategoriaService service;
 
-        List<Categoria> lista = new ArrayList<>();
-        lista.add(cat1);
-        lista.add(cat2);
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public ResponseEntity<?> find(@PathVariable Integer id) {
 
-        return lista;
+        Categoria obj = service.find(id);
+
+        return ResponseEntity.ok().body(obj);
     }
 
 
