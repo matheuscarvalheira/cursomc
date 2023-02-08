@@ -2,14 +2,20 @@ package com.matheus.cursomc.domain;
 
 import com.matheus.cursomc.domain.enums.EstadoPagamento;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class Pagamento implements Serializable {
 
+    @Id
     private Integer id;
     private EstadoPagamento estado;
 
+    @OneToOne
+    @JoinColumn(name="pedido_id")
+    @MapsId
     private Pedido pedido;
 
     public Pagamento(){}
