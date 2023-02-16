@@ -15,7 +15,7 @@ public class Produto implements Serializable {
     private Integer id;
     private String nome;
     private Double preco;
-    @JsonBackReference
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "PRODUTO_CATEGORIA",
             joinColumns = @JoinColumn(name = "produto_id"),
@@ -38,9 +38,9 @@ public class Produto implements Serializable {
     }
 
     @JsonIgnore
-    public List<Pedido> getPedidos(){
-        List<Pedido> lista =  new ArrayList<>();
-        for (ItemPedido x : itens){
+    public List<Pedido> getPedidos() {
+        List<Pedido> lista = new ArrayList<>();
+        for (ItemPedido x : itens) {
             lista.add(x.getPedido());
         }
         return lista;
