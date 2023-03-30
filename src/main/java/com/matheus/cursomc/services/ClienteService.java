@@ -1,7 +1,6 @@
 package com.matheus.cursomc.services;
 
 import com.matheus.cursomc.domain.Cliente;
-import com.matheus.cursomc.domain.Cliente;
 import com.matheus.cursomc.dto.ClienteDTO;
 import com.matheus.cursomc.repositories.ClienteRepository;
 import com.matheus.cursomc.services.exceptions.DataIntegrityException;
@@ -58,7 +57,7 @@ public class ClienteService {
         return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
     }
 
-    private void updateData(Cliente newObj, Cliente obj){
+    private void updateData(Cliente newObj, Cliente obj) {
         newObj.setNome(obj.getNome());
         newObj.setEmail(obj.getEmail());
     }
