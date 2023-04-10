@@ -16,7 +16,7 @@ import javax.validation.ConstraintValidatorContext;
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
 
     @Autowired
-    ClienteRepository repo;
+    private ClienteRepository repo;
 
     @Override
     public void initialize(ClienteInsert ann) {
