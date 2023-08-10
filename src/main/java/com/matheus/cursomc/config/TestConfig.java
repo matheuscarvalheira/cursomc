@@ -1,6 +1,8 @@
 package com.matheus.cursomc.config;
 
 import com.matheus.cursomc.services.DBService;
+import com.matheus.cursomc.services.EmailService;
+import com.matheus.cursomc.services.MockEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,4 +22,10 @@ public class TestConfig {
         dbService.instantiateTestDatabase();
         return true;
     }
+
+    @Bean
+    public EmailService emailService() {
+        return new MockEmailService();
+    }
+
 }
